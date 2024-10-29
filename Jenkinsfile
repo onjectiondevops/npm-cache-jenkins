@@ -17,18 +17,12 @@ pipeline {
                     arbitraryFileCache(
                         path: "node_modules",
                         includes: "**/*",
-                        cacheValidityDecidingFile: "base-package.json"
+                        cacheValidityDecidingFile: "package-lock.json"
                     )
                 ]) {
-                    // Install stable dependencies from package-stable.json
+                    // Install the ones not in the cache
                     sh 'npm install'
                 }
-            }
-        }
-        stage('Install Dynamic Dependencies') {
-            steps {
-                // Install additional dependencies from main package.json
-                sh 'npm install'
             }
         }
         stage('Build Application') {
