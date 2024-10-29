@@ -1,8 +1,14 @@
 pipeline {
+    parameters {
+        choice choices: ['nodejs18', 'nodejs16', 'nodejs14'], description: 'Choose NodeJS version', name: 'NODEJS_TOOL_VERSION'
+    }
     agent {
         kubernetes {
-            label 'slave-4cpu-16gb'
+            label 'slave-2cpu-16gb'
         }
+    }
+    tools {
+        nodejs params.NODEJS_TOOL_VERSION
     }
     stages {
         stage('Restore npm Cache') {
