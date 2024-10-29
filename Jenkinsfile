@@ -11,17 +11,24 @@ pipeline {
         nodejs params.NODEJS_TOOL_VERSION
     }
     stages {
-        stage('Restore npm Cache') {
+        stage('Install Base Dependencies') {
             steps {
                 cache(caches: [
                     arbitraryFileCache(
                         path: "node_modules",
                         includes: "**/*",
-                        cacheValidityDecidingFile: "package-lock.json"
+                        cacheValidityDecidingFile: "base-package.json"
                     )
                 ]) {
+                    // Install stable dependencies from package-stable.json
                     sh 'npm install'
                 }
+            }
+        }
+        stage('Install Dynamic Dependencies') {
+            steps {
+                // Install additional dependencies from main package.json
+                sh 'npm install'
             }
         }
         stage('Build Application') {
