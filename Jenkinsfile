@@ -4,7 +4,7 @@ pipeline {
     }
     agent {
         kubernetes {
-            label 'slave-2cpu-16gb'
+            label 'slave-2cpu-8gb'
         }
     }
     tools {
