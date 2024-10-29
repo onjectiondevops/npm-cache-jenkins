@@ -17,7 +17,7 @@ pipeline {
                     arbitraryFileCache(
                         path: "node_modules",
                         includes: "**/*",
-                        cacheName: "main"
+                        cacheName: ${env.BRANCH_NAME}
                     )
                 ]) {
                     // Install the ones not in the cache
