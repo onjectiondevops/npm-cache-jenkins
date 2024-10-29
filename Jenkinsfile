@@ -21,7 +21,7 @@ pipeline {
                     )
                 ]) {
                     // Install the ones not in the cache
-                    sh 'npm install'
+                    sh 'npm install --legacy-peer-deps'
                 }
             }
         }
