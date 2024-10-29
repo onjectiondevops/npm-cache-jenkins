@@ -17,7 +17,6 @@ pipeline {
                     arbitraryFileCache(
                         path: "node_modules",
                         includes: "**/*",
-                        cacheValidityDecidingFile: "package-lock.json"
                     )
                 ]) {
                     // Install the ones not in the cache
