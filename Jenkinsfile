@@ -17,11 +17,11 @@ pipeline {
                     arbitraryFileCache(
                         path: "node_modules",
                         includes: "**/*",
-                        cacheName: "main"
+                        cacheName: "main-cache"
                     )
                 ]) {
                     // Install the ones not in the cache
-                    sh 'npm install --legacy-peer-deps'
+                    sh 'npm install'
                 }
             }
         }
