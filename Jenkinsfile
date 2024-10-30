@@ -17,11 +17,11 @@ pipeline {
                     arbitraryFileCache(
                         path: "node_modules",
                         includes: "**/*",
-                        cacheName: "main-cache"
+                        cacheName: "main-1"
                     )
                 ]) {
                     // Install the ones not in the cache
-                    sh 'npm install'
+                    sh 'yarn install'
                 }
             }
         }
